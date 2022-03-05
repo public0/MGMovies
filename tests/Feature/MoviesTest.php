@@ -8,7 +8,7 @@ use Tests\TestCase;
 
 class MoviesTest extends TestCase
 {
-//    use RefreshDatabase;
+    use RefreshDatabase;
     /**
      * @dataProvider jsonInputCase
      * @param string $json

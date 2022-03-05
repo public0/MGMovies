@@ -16,14 +16,19 @@ class AbstractRepository
     protected function cache($data, int $expire) {
 
         $key = static::class.'\\'.$this->calledMethod();
-        $redis = app()->make('redis');
-        if(!$redis->exists($key)) {
-            $data = json_encode($data);
-            $redis->set($key, $data);
-            $redis->expire($key, $expire);
-            return $data;
-        } else {
-            return $redis->get($key);
+        try {
+            $redis = app()->make('redis');
+            if(!$redis->exists($key)) {
+                $data = json_encode($data);
+                $redis->set($key, $data);
+                $redis->expire($key, $expire);
+                return $data;
+            } else {
+                return $redis->get($key);
+            }
+        } catch(\Exception $e) {
+            // Here we should log the error.
+            die($e->getMessage());
         }
     }
 }
