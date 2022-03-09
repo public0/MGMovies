@@ -23,7 +23,7 @@ class MovieController extends Controller
      */
     public function index()
     {
-        return response($this->movie->all());
+        return response($this->movieRepository->all());
     }
 
     /**
