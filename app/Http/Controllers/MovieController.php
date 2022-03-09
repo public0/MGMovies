@@ -9,11 +9,11 @@ use App\Repositories\MovieRepository;
 
 class MovieController extends Controller
 {
-    protected MovieRepository $movie;
+    protected MovieRepository $movieRepository;
 
-    public function __construct(MovieRepository $movie)
+    public function __construct(MovieRepository $movieRepository)
     {
-        $this->movie = $movie;
+        $this->$movieRepository = $movieRepository;
     }
 
     /**
