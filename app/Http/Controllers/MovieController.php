@@ -13,7 +13,7 @@ class MovieController extends Controller
 
     public function __construct(MovieRepository $movieRepository)
     {
-        $this->$movieRepository = $movieRepository;
+        $this->movieRepository = $movieRepository;
     }
 
     /**
